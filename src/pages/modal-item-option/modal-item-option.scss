@@ -1,0 +1,105 @@
+page-modal-item-option,
+.category {
+
+  .myCustomSelect{
+  max-width: 100% !important;
+}
+
+  ion-list.list-products {
+
+    .discount-rate {
+      font-size: 0.9em;
+      padding: 0px;
+      background: rgba(244, 67, 54, .15);
+    }
+
+
+    &.list {
+      ion-item {
+
+        ion-thumbnail {
+          margin: 10px 0px 0px 0;
+          width: 5rem;
+          height: 0rem;
+
+          img {
+            width: auto;
+            height: auto;
+            max-width: 10rem;
+            max-height: 5rem;
+          }
+        }
+
+        .item-inner {
+          align-items: flex-start;
+          position: relative;
+
+          ion-label {
+            margin: 10px 0px 0px 0;
+
+            .bottom-info {
+              position: absolute;
+              width: 100%;
+              bottom: 1px;
+              padding-right: 8px;
+            }
+          }
+        }
+      }
+    }
+
+    &.grid {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      ion-item {
+        width: 50%;
+        display: block;
+
+        ion-thumbnail {
+
+          img {
+            width: 100%;
+            height: auto;
+            max-width: none;
+            max-height: none;
+          }
+        }
+
+        .item-inner {
+
+          ion-label {
+
+            .origin-price {
+              min-height: 2rem;
+            }
+
+            .pull-left,
+            .pull-right {
+              display: block;
+              float: none;
+            }
+          }
+        }
+      }
+
+      ion-item:nth-child(2n) {
+        border-left: 1px solid color($colors, bgColor);
+      }
+    }
+  }
+
+  ion-toolbar {
+    ion-buttons.bar-buttons {
+      width: 50%;
+      text-align: center;
+
+      .bar-button {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+

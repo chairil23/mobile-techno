@@ -1,0 +1,24 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.ionicframework.ionic2ecommerce103119"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.ionicframework.ionic2ecommerce103119"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.ionicframework.ionic2ecommerce103119"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.ionicframework.ionic2ecommerce103119"
+    }
+  },
+  "dependent_plugins": {}
+}

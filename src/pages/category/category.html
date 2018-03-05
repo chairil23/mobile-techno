@@ -1,0 +1,76 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ subcategory?.name }}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <!--List of items-->
+  <ion-list no-margin class="list-full-border list-products"
+            [ngClass]="{'grid': viewType == 'grid', 'list': viewType == 'list'}">
+    <ion-item class="product" *ngFor="let item of subcategory?.products" (click)="viewItem(item.id)">
+      <ion-thumbnail item-left *ngIf="item.images.length">
+        <img src="http://{{ip}}/uploads/{{ item.images[0].images }}">
+      </ion-thumbnail>
+      <!--item's information-->
+      <div>
+        <div text-wrap>{{ item.jdl_Pdk }}</div>
+        <!-- <div>
+          <span ion-text color="danger" *ngIf="item.sale_price">{{ item.harga_awal | currency:'Rp ':true }}</span>
+          <span ion-text color="danger" *ngIf="!item.sale_price">{{ item.harga_awal | currency:'Rp ':true }}</span>
+        </div>
+        <div class="origin-price text-sm">
+          <span *ngIf="item.sale_price" class="text-decoration">{{ item.harga_awal | currency:'Rp ':true }}</span>
+          <span *ngIf="item.sale_price" class="discount-rate" ion-text color="danger">{{ discountPercent(item.harga_awal, item.harga_awal) }}%</span>
+        </div> -->
+        <div class="bottom-info text-sm">
+          <span ion-text color="secondary" class="pull-left price bold" *ngIf="item.materials.length && item.harga_awal">{{ item.harga_awal + item.materials[0].harga | currency:'Rp ':true}}</span>
+          <!-- <span ion-text color="gray" class="pull-right">
+            2 Orders
+          </span> -->
+          <div class="clear"></div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
+
+<!--Footer buttons-->
+<ion-footer class="category">
+  <ion-toolbar position="bottom">
+    <!--filter button-->
+    <ion-buttons text-center start>
+      <button ion-button icon-left (click)="viewGrid()">
+        <ion-icon name="apps"></ion-icon>
+        Grid View
+      </button>
+    </ion-buttons>
+    <!--attribute button-->
+    <ion-buttons text-center end>
+      <button ion-button icon-left (click)="viewList()">
+        <ion-icon name="list"></ion-icon>
+        List View
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,70 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Cart</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content class=" common-bg">
+    <!--Choose shipping location-->
+  <div *ngFor="let item of cart; let idx = index" >
+    <ion-list no-margin class="list-full-border list-products"
+              [ngClass]="{'grid': viewType == 'grid', 'list': viewType == 'list'}">
+      <ion-item class="product">
+        <ion-thumbnail item-left *ngIf="item.product.images.length">
+          <img src="http://{{ip}}/uploads/{{ item.product.images[0].images }}" alt="{{ item.jdl_Pdk }}">
+        </ion-thumbnail>
+        <!--item's information-->
+        <div>
+          <div text-wrap>{{ item?.product.jdl_Pdk }}</div>
+          <div padding-bottom>
+              <span class="pull-left" ion-text color="danger">{{ item.harga + item.product.harga_awal | currency:'Rp ':true }} </span>
+              <span class="pull-right" ion-text>  x {{item.kuantitas}}</span>
+              <div class="clear"></div>
+          </div>
+          <h6 text-wrap>
+            {{option(item)}}
+              <!-- <div class="input-qty">
+                <span class="btn">
+                <ion-icon name="ios-remove"></ion-icon>
+                </span>
+                <input type="text" [(ngModel)]="item.kuantitas">
+                <span class="btn">
+                <ion-icon name="ios-add"></ion-icon>
+                </span>
+                <div class="clear"></div>
+              </div>-->
+              <div class="pull-right bottom-info text-lg trash-btn">
+                <ion-icon name="trash" color="gray" class="pull-right" (click)="remove(idx, item.id)"></ion-icon>
+                <div class="clear"></div>
+              </div> 
+          </h6>
+        </div>
+      </ion-item>
+    </ion-list>
+    </div>
+  </ion-content>
+  <!-- <ion-footer class="cart-footer" padding>
+    <ion-title>
+      <span ion-text color="gray">Total</span>
+      <br/>
+      <span *ngIf="cart" ion-text color="danger">{{subTotal() | currency:'Rp ':true }}</span>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="checkout()" color="danger">
+        Checkout
+      </button>
+    </ion-buttons>
+  </ion-footer> -->
+  

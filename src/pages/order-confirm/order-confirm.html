@@ -1,0 +1,214 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Option Produk</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="border-bottom">
+        <ion-item class="no-border">
+          <ion-label>Jumlah Pesanan</ion-label>
+          <ion-input min="1" type="number" class="myCustomSelect"[(ngModel)]="form.kuantitas">
+          </ion-input>
+        </ion-item>
+      </div>
+  <div class="border-bottom">
+    <ion-item class="no-border">
+      <ion-label>Jenis Kertas</ion-label>
+      <ion-select class="myCustomSelect" *ngIf="kertas().length" [(ngModel)]="form.jenis_kertas" (ionChange)="changed()" [multiple]="false">
+        <ion-option *ngFor="let material of kertas()" [value]="material.jns_kertas">{{material?.jns_kertas}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <div class="border-bottom">
+    <ion-item class="no-border">
+      <ion-label>Finishing</ion-label>
+      <ion-select class="myCustomSelect" *ngIf="finishing().length" [(ngModel)]="form.jenis_cetak" (ionChange)="changed()">
+          <ion-option *ngFor="let material of finishing()" [value]="material.jns_finishing">{{material?.jns_finishing}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <div class="border-bottom" *ngIf="item.subcategory_id === 8">
+      <ion-item class="no-border">
+        <ion-label>Material</ion-label>
+        <ion-select class="myCustomSelect" [(ngModel)]="form.material" *ngIf="material().length">
+          <ion-option *ngFor="let material of maaterial()" [value]="material.jns_material">{{material?.jns_mmaterial}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+
+    <div class="border-bottom" *ngIf="item.subcategory_id === 1 || item.subcategory_id === 2" >
+      <ion-item class="no-border">
+        <ion-label>Nama</ion-label>
+          <ion-input type="text" class="myCustomSelect"  [(ngModel)]="form.nama">
+        </ion-input>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 1 || item.subcategory_id === 2 || item.subcategory_id === 3 || item.subcategory_id === 4 || item.subcategory_id === 5 || item.subcategory_id === 6 || item.subcategory_id === 7">
+      <ion-item class="no-border">
+        <ion-label>Nama Perusahan</ion-label>
+        <ion-input type="text" class="myCustomSelect"  [(ngModel)]="form.nama_perusahaan">
+        </ion-input>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 1 || item.subcategory_id === 2">
+      <ion-item class="no-border">
+        <ion-label>Jabatan</ion-label>
+        <ion-input type="text" class="myCustomSelect"  [(ngModel)]="form.jabatan">
+        </ion-input>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 1 || item.subcategory_id === 2 || item.subcategory_id === 3 || item.subcategory_id === 4 || item.subcategory_id === 6 || item.subcategory_id === 7">
+      <ion-item class="no-border">
+        <ion-label>No. Telepon</ion-label>
+        <ion-input type="number" class="myCustomSelect"  [(ngModel)]="form.no_telpon">
+        </ion-input>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 1 || item.subcategory_id === 2 || item.subcategory_id === 3 || item.subcategory_id === 4 || item.subcategory_id === 6 || item.subcategory_id === 7">
+      <ion-item class="no-border">
+        <ion-label>Alamat</ion-label>
+        <ion-input type="text" class="myCustomSelect"  [(ngModel)]="form.alamat">
+        </ion-input>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 1 || item.subcategory_id === 2 || item.subcategory_id === 3 || item.subcategory_id === 4 || item.subcategory_id === 6 || item.subcategory_id === 7">
+      <ion-item class="no-border">
+        <ion-label>Email</ion-label>
+        <ion-input type="text" class="myCustomSelect"  [(ngModel)]="form.email">
+        </ion-input>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 3 || item.subcategory_id === 5 || item.subcategory_id === 6 || item.subcategory_id === 7 || item.subcategory_id === 8 || item.subcategory_id === 9 || item.subcategory_id === 10 || item.subcategory_id === 12 || item.subcategory_id === 16 || item.subcategory_id === 17">
+      <ion-item class="no-border">
+        <ion-label>Ukuran</ion-label>
+        <ion-select class="myCustomSelect"  [(ngModel)]="form.ukuran" *ngIf="ukuran().length">
+          <ion-option *ngFor="let material of ukuran()" [value]="material.ukuran">{{material?.ukuran}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 12">
+        <ion-item class="no-border">
+          <ion-label>Model Bantal</ion-label>
+          <ion-select class="myCustomSelect"  [(ngModel)]="form.model" *ngIf="modelBantal().length"> 
+            <ion-option *ngFor="let material of modelBantal()" [value]="material.model_bantal">{{material?.model_bantal}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 5 || item.subcategory_id === 10 || item.subcategory_id === 12 || item.subcategory_id === 16 || item.subcategory_id === 17">
+      <ion-item class="no-border">
+        <ion-label>Warna</ion-label>
+        <ion-select class="myCustomSelect"  [(ngModel)]="form.warna" *ngIf="warna().length">
+          <ion-option *ngFor="let material of warna()" [value]="material.warna">{{material?.warna}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 10">
+      <ion-item class="no-border">
+        <ion-label>Model Cetak</ion-label>
+        <ion-select class="myCustomSelect"  [(ngModel)]="form.jenis_cetak" *ngIf="modelCetak().length">
+          <ion-option *ngFor="let material of modelCetak()" [value]="material.jns_finishing">{{material?.jns_finishing}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 10">
+      <ion-item class="no-border">
+        <ion-label>Sisi</ion-label>
+        <ion-select class="myCustomSelect"  [(ngModel)]="form.sisi" *ngIf="sisi().length">
+          <ion-option *ngFor="let material of sisi()" [value]="material.sisi">{{material?.sisi}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 10 || item.subcategory_id === 16 || item.subcategory_id === 17">
+      <ion-item class="no-border">
+        <ion-label>Bahan</ion-label>
+        <ion-select class="myCustomSelect"  [(ngModel)]="form.bahan"  *ngIf="bahan().length">
+          <ion-option *ngFor="let material of bahan()" [value]="material.bahan">{{material?.bahan}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 6">
+      <ion-item class="no-border">
+        <ion-label>Type Jilid</ion-label>
+        <ion-select class="myCustomSelect"  [(ngModel)]="form.jilid" *ngIf="jilid().length">
+          <ion-option *ngFor="let material of jilid()" [value]="material.tipe_jilid">{{material?.tipe_jilid}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 11">
+      <ion-item class="no-border">
+        <ion-label>Jenis Mug</ion-label>
+        <ion-select class="myCustomSelect"  [(ngModel)]="form.model" *ngIf="mug().length">
+          <ion-option *ngFor="let material of mug()" [value]="material.jns_mug">{{material?.jns_mug}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 12">
+      <ion-item class="no-border">
+        <ion-label>Kain</ion-label>
+        <ion-select class="myCustomSelect"  [(ngModel)]="form.kain" *ngIf="kain().length">
+          <ion-option *ngFor="let material of kain()" [value]="material.jenis_kain">{{material?.jenis_kain}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 13 || item.subcategory_id === 14 || item.subcategory_id === 15">
+      <ion-item class="no-border">
+        <ion-label>Ukuran</ion-label>
+        <ion-input type="text" class="myCustomSelect" placeholder="P x L"  [(ngModel)]="form.ukuran"></ion-input>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 16 || item.subcategory_id === 17">
+      <ion-item class="no-border">
+        <ion-label>Area Cetak Depan</ion-label>
+        <ion-select class="myCustomSelect" (ngModel)]="form.cetak_depan" *ngIf="cetakDepan().length">
+            <ion-option *ngFor="let material of cetakDepan()" [value]="material.cetak_depan">{{material?.cetak_depan}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="border-bottom" *ngIf="item.subcategory_id === 16 || item.subcategory_id === 17">
+        <ion-item class="no-border">
+          <ion-label>Area Cetak Belakang</ion-label>
+          <ion-select class="myCustomSelect"  [(ngModel)]="form.cetak_belakang" *ngIf="cetakBelakang().length">
+            <ion-option *ngFor="let material of cetakBelakang()" [value]="material.cetak_belakang">{{material?.cetak_belakang}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div class="border-bottom" *ngIf="item.subcategory_id === 17">
+        <ion-item class="no-border">
+          <ion-label>Area Cetak Lengan</ion-label>
+          <ion-select class="myCustomSelect"  [(ngModel)]="form.cetak_lengan_kanan" *ngIf="cetakLengan().length">
+            <ion-option *ngFor="let material of cetakLengan()" [value]="material.cetak_lengan">{{material?.cetak_lengan}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+
+
+
+    <div class="border-bottom">
+      <ion-item class="no-border">
+        <ion-label>Logo: </ion-label>
+        <ion-input type="file" class="myCustomSelect" placeholder="Upload">
+        </ion-input>
+      </ion-item>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="primary" block (click)="simpan()">Simpan</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

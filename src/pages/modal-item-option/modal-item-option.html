@@ -1,0 +1,116 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Checkout</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content class=" common-bg">
+      <!--Choose shipping location-->
+      <div class="card">
+          <div class="card-header" padding>
+              Kurir:
+          </div>
+          <div>
+            <ion-item>
+              <ion-label>Jasa Kurir</ion-label>
+              <ion-select [(ngModel)]="kurir" (ionChange)="changed()">
+                <ion-label>Jasa Kurir</ion-label>
+                  <ion-option value="jne">Jalur Nugraha Ekakurir (JNE)</ion-option>
+                  <ion-option value="tiki">Citra Van Titipan Kilat (TIKI)</ion-option>
+                  <ion-option value="pos">POS Indonesia (POS)</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Service</ion-label>
+                <ion-select [(ngModel)]="biaya" *ngIf="service" (ionChange)="change()">
+                    <ion-label>POS Indonesia (POS)</ion-label>
+                    <ion-option *ngFor="let x of service.rajaongkir.results[0].costs" [value]="x">{{x.description}} ({{x.service}})</ion-option>
+                    
+                </ion-select> 
+            </ion-item>
+                 
+          </div>
+          <div class="card-header" padding>
+            Shipping address:
+          </div>
+          <div padding>
+            <span ion-text color="secondary">{{alamat?.address}} {{alamat?.city_name}} {{alamat?.province}}</span>
+          </div>
+        </div> 
+    <div *ngFor="let item of cart; let idx = index" >
+      <ion-list no-margin class="list-full-border list-products"
+                [ngClass]="{'grid': viewType == 'grid', 'list': viewType == 'list'}">
+        <ion-item class="product">
+          <ion-thumbnail item-left *ngIf="item.product.images.length">
+            <img src="http://{{ip}}/uploads/{{ item.product.images[0].images }}" alt="{{ item.jdl_Pdk }}">
+          </ion-thumbnail>
+          <!--item's information-->
+          <div>
+            <div text-wrap>{{ item?.product.jdl_Pdk }}</div>
+            <div padding-bottom>
+                <span class="pull-left" ion-text color="danger">{{ item.harga + item.product.harga_awal | currency:'Rp ':true }} </span>
+                <span class="pull-right" ion-text>  x {{item.kuantitas}}</span>
+                <div class="clear"></div>
+            </div>
+            <h6 text-wrap>
+              {{option(item)}}
+                <!-- <div class="input-qty">
+                  <span class="btn">
+                  <ion-icon name="ios-remove"></ion-icon>
+                  </span>
+                  <input type="text" [(ngModel)]="item.kuantitas">
+                  <span class="btn">
+                  <ion-icon name="ios-add"></ion-icon>
+                  </span>
+                  <div class="clear"></div>
+                </div>-->
+                <div class="pull-right bottom-info text-lg trash-btn">
+                  <ion-icon name="trash" color="gray" class="pull-right" (click)="remove(idx, item.id)"></ion-icon>
+                  <div class="clear"></div>
+                </div> 
+            </h6>
+          </div>
+        </ion-item>
+      </ion-list>
+      </div>
+      <div class="card" margin-top>
+          <div class="card-footer" padding>
+            <div>
+              <span class="pull-left" ion-text color="gray">Subtotal</span>
+              <span class="pull-right" ion-text color="gray" *ngIf="cart">{{ subTotal()| currency:'Rp ':true }}</span>
+              <div class="clear"></div>
+            </div>
+            <div>
+              <span class="pull-left" ion-text color="gray">Shipping</span>
+              <span class="pull-right" ion-text color="gray">{{ biaya?.cost[0].value | currency:'Rp ':true }}</span>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+    </ion-content>
+  
+  <ion-footer class="cart-footer" padding>
+    <ion-title>
+      <span ion-text color="gray">Total</span>
+      <br/>
+      <span class="bold" ion-text color="danger">{{ subTotal() + biaya?.cost[0].value| currency:'Rp ':true }}</span>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="buy()" color="danger">
+        Beli
+      </button>
+    </ion-buttons>
+  </ion-footer>
+  

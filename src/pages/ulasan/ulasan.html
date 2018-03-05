@@ -1,0 +1,50 @@
+<!--
+  Generated template for the UlasanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Ulasan</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-title padding>
+        <h2 class="title" bold>
+            Mohon Bagikan Pengalaman anda
+        </h2>
+        <h4>
+            Berikan Peringkat untuk produk ini:
+        </h4>
+    </ion-card-title>
+    <rating [(ngModel)]="form.rate" 
+      max="5" 
+      emptyStarIconName="star-outline" 
+      halfStarIconName="star-half" 
+      starIconName="star" 
+      nullable="false"
+      class="ulasan"
+      (ngModelChange)="onModelChange($event)"
+      > 
+    </rating>
+    
+    <ion-item>
+      <ion-label floating>Judul Ulasan (optional):</ion-label>
+      <ion-input [readonly]="!form.rate" type="text" [(ngModel)]="form.judul" name="judul"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  floating>Deskripsi Ulasan:</ion-label>
+      <ion-textarea [readonly]="!form.rate" type="text" [(ngModel)]="form.komen" name="komen"></ion-textarea>
+      <span>Dengan mengirimkan ulasan ini, Saya setuju nama saya ditampilkan sebagai {{user}}</span>
+    </ion-item>
+    
+  </ion-card>
+  <button ion-button (click)="dismiss()">Cancel</button>
+  <button ion-button [disabled]="!form.rate || !form.komen" (click)="send()">Post</button>
+</ion-content>

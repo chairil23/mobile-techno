@@ -1,0 +1,59 @@
+<!--
+  Generated template for the PembayaranPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>pembayaran</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div class="card">
+            <div class="border-bottom">
+            <ion-item class="no-borde " text-wrap>
+            <span class="pull-center bold" ion-text color="danger">Mohon ikuti langkah-langkah berikut:</span>
+            </ion-item>
+            </div>
+            <div class="border-bottom">
+            <ion-item class="no-border" text-wrap>
+            <span>1. Pembayaran melalui transfer ke Bank Mandiri atas Nama Technographic dengan nomor Rekening 1111 231 109 231
+           </span>
+           </ion-item>
+           </div>
+           <div class="border-bottom">
+            <ion-item class="no-border" text-wrap>
+             <span>2. Tunjukkan bukti pembayaran dengan memfoto/menscan bukti pembayarannya dengan menguploadnya melaui tombol dibawah ini
+            </span>
+            </ion-item>
+            </div>
+            <div class="border-bottom">
+            <ion-item class="no-border" text-wrap>
+             <span> 3. Pesanan akan diproses setelah melakukan pembayaran dan menunjukkan bukti pembayaran sesuai llangkah no 2
+            </span>
+            </ion-item>
+            </div>
+            <!-- <div class="border-bottom">
+            <ion-item class="no-border" text-wrap>
+            <span>4. Pesanan akan hilang jika tidak melakukan pembayaran dalam kurun waktu 24 jam dimulai dari pembuatan pesanan        
+            </span>
+            </ion-item>
+            </div> -->
+ </div>
+     <div class="card light-bg">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+          <span class="pull-left bold" ion-text color="gray">Total Pembayaran:</span>
+          <span class="pull-right bold" ion-text color="danger" style="padding-bottom:20px">{{ total() | currency:'Rp ':true }}</span><br>
+          <span class="pull-right"><button ion-button color="secondary" (click)="getImage()">Lampirkan</button> <button ion-button color="primary">Kirim</button></span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+</ion-content>

@@ -1,0 +1,110 @@
+page-item,
+.item {
+  ion-slides {
+    height: auto;
+
+    img {
+      float: left;
+    }
+  }
+  .btn-wish-list {
+    position: absolute;
+    top: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1000;
+    right: 1rem;
+  }
+
+  ion-thumbnail {
+
+          img {
+            width: 100%;
+            height: auto;
+            max-width: none;
+            max-height: none;
+          }
+        }
+
+  .item-stats {
+    ion-col + ion-col {
+      border-left: 1px solid color($colors, bgColor);
+    }
+  }
+
+  ul {
+    padding: 0px;
+    &.rating {
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+    &.rating li {
+      padding: 1px 1px !important;
+      background: none;
+      color: #ffb400;
+  
+      ion-icon {
+        font-size: 20px;
+      }
+    }
+  }
+ .freelance.item-md {
+    padding-left: 0px;
+  }
+
+  .ulasan ul {
+    padding: 0px;
+    &.rating {
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+    &.rating li {
+      padding: 1px 1px !important;
+      background: none;
+      color: #ffb400;
+  
+      ion-icon {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .ulasan.item-md {
+    padding-right: 16px;
+  }
+
+  .inner{
+    width: 200px;
+    height: 100%;
+    ion-card{
+      display: inline-block;
+      border: solid 1px #ccc;
+
+      img {
+        width: 100%;
+        height: 80%;
+        // max-width: 10rem;
+        max-height: 10rem;
+      }
+    }
+  }
+
+  .card-title-md{
+    font-size: 16px;
+    padding: 0px;
+  }
+
+  .card-content-md {
+    padding: 4px 16px;
+  }
+
+  .title.ulasan{
+    padding-top: 12px;
+  }
+
+  .ulasan.header{
+    height: 56px;
+    padding-top: 8px;
+  }
+}

@@ -1,0 +1,67 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goToSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button ion-button (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class=" common-bg">
+  <!-- slider on top-->
+  <ion-slides pager autoplay="2000">
+    <ion-slide *ngFor="let slide of slides">
+      <img src="{{ slide.src }}" alt="">
+    </ion-slide>
+  </ion-slides>
+  <!--List of items-->
+  <div style="background-color: white" *ngFor="let sub of subcategory" >
+    <h4 class="nsub">{{sub.name}}</h4>
+    <span ion-text color="primary" class="pull-right" (click)="viewSub(sub.id)" style="margin-right: 7px">Lihat Semua</span>
+  <ion-list no-margin class="list-full-border list-products"
+            [ngClass]="{'grid': viewType == 'grid', 'list': viewType == 'list'}">
+    <ion-item class="product" *ngFor="let item of sub?.products" (click)="viewItem(item.id)">
+      <ion-thumbnail item-left *ngIf="item.images.length">
+        <img src="http://{{ip}}/uploads/{{ item.images[0].images }}">
+      </ion-thumbnail>
+      <!--item's information-->
+      <div>
+        <div text-wrap>{{ item.jdl_Pdk }}</div>
+        <div>
+          <span ion-text color="danger" *ngIf="item.materials.length">{{ item?.harga_awal + item.materials[0].harga | currency:'Rp ':true }}</span>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  </div>
+</ion-content>
+<ion-footer class="category">
+  <ion-toolbar position="bottom">
+    <!--filter button-->
+    <ion-buttons text-center start>
+      <button ion-button icon-left (click)="viewGrid()">
+        <ion-icon name="apps"></ion-icon>
+        Grid View
+      </button>
+    </ion-buttons>
+    <!--attribute button-->
+    <ion-buttons text-center end>
+      <button ion-button icon-left (click)="viewList()">
+        <ion-icon name="list"></ion-icon>
+        List View
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
